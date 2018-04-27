@@ -1,0 +1,21 @@
+{
+    "name": "hr_management_app",
+    "version": "1.0.0",
+    "description": "HR management app to manage employees in a company",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "MEAN",
+        "Stack",
+        "HR Manager"
+    ],
+    "author": "Pavan Prabhakar Bhat",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.16.3",
+        "mongoose": "^5.0.16",
+        "morgan": "^1.9.0"
+    }
+}
