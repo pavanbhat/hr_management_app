@@ -14,11 +14,17 @@
     "author": "Pavan Prabhakar Bhat",
     "license": "MIT",
     "dependencies": {
+        "@angular/animations": "^5.2.10",
+        "@angular/cdk": "^5.2.5",
+        "@angular/material": "^5.2.5",
         "bcrypt-nodejs": "0.0.3",
         "express": "^4.16.3",
         "mongoose": "^5.0.16",
         "morgan": "^1.9.0",
         "pug": "^2.0.3",
         "uniqid": "^4.1.1"
+    },
+    "devDependencies": {
+        "@angular/cli": "^1.7.4"
     }
 }
