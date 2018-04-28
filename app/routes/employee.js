@@ -58,14 +58,14 @@
      });
 
      router.get('/', function(request, response) {
-         Employee.find({}).pretty().exec(function(err, foundEmployees) {
+         Employee.find({}, function(err, foundEmployees) {
              if (err) {
-                 res.json({
+                 response.json({
                      message: 'There are no employees that could be found' + err
                  });
              } else {
-                 res.json({
-                     foundEmployees: foundEmployees
+                 response.json({
+                     foundEmployees
                  });
              }
          });

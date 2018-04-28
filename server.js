@@ -25,6 +25,10 @@ mongoose.connect(config.database, function(err) {
     }
 });
 
+app.get('/', function(req, res) {
+    res.send("Connected");
+});
+
 // Listens to the port on which the server is running
 app.listen(port, function() {
     console.log('Successfully running server on port: ' + port);
