@@ -1,7 +1,7 @@
  var Employee = require('../models/employee');
 
  module.exports = function(router) {
-     router.post('/employees', function(request, response) {
+     router.post('/', function(request, response) {
          var employee = new Employee();
          employee.username = request.body.username;
          employee.firstName = request.body.firstName;
