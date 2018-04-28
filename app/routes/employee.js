@@ -43,7 +43,7 @@
          if (inputCheck['username'] && inputCheck['email'] && inputCheck['firstName'] && inputCheck['lastName'] && inputCheck['gender'] && inputCheck['phoneNumber']) {
              employee.save(function(err) {
                  if (err) {
-                     response.send("Employee already exits!");
+                     response.send("Employee already exits!" + err);
                  } else {
                      response.send("Employee Created!");
                  }
