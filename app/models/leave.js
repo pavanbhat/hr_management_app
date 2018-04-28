@@ -3,8 +3,9 @@ var schema = mongoose.Schema;
 
 var leaveSchema = new schema({
     employeeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
+        type: String,
+        ref: "Employee",
+        required: true
     },
     leaveReason: {
         type: String,

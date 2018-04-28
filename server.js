@@ -6,7 +6,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var router = express.Router();
 const config = require('./app/config/database');
-var appRoutes = require('./app/routes/api')(router);
+var employeeRoutes = require('./app/routes/employee')(router);
 
 // Middleware routes
 app.use(morgan('dev'));
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-app.use('/api', appRoutes);
+app.use('/employee', employeeRoutes);
 
 // Database connection
 mongoose.connect(config.database, function(err) {

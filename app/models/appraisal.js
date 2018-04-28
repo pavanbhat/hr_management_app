@@ -3,12 +3,14 @@ var schema = mongoose.Schema;
 
 var appraisalSchema = new schema({
     employeeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
+        type: String,
+        ref: "Employee",
+        required: true
     },
     managerId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
+        type: String,
+        ref: "Employee",
+        required: true
     },
     communicationPoints: {
         type: Number

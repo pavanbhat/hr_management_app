@@ -3,12 +3,14 @@ var schema = mongoose.Schema;
 
 var timesheetShema = new schema({
     employeeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee"
+        type: String,
+        ref: "Employee",
+        required: true
     },
     projectId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Project"
+        type: String,
+        ref: "Project",
+        required: true
     },
     date: {
         type: Date,

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
+var uid = require('uniqid');
 
 var employeeSchema = new schema({
     employeeId: {
@@ -46,19 +47,19 @@ var employeeSchema = new schema({
         default: Date.now
     },
     phoneNumber: {
-        type: Number
-    },
-    addressId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Address"
+        type: String,
+        required: true
     },
     roleId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
+        required: true,
         ref: "Role"
     }
 });
 
 employeeSchema.pre('save', function(next) {
+    this.employeeId = uid();
+    this.password = uid();
     bcrypt.hash(this.password, null, null, function(err, hash) {
         if (err) {
             return next(err);

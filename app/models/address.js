@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var addressSchema = new schema({
+    employeeId: {
+        type: String,
+        ref: "Employee",
+        required: true
+    },
     street: {
         type: String,
         required: true
