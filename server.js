@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-app.use('/employee', employeeRoutes);
+app.use('/api/employee', employeeRoutes);
 
 // Database connection
 mongoose.connect(config.database, function(err) {

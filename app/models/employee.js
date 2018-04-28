@@ -17,8 +17,7 @@ var employeeSchema = new schema({
         trim: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
     },
     firstName: {
         type: String,
