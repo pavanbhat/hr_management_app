@@ -24,3 +24,5 @@ var appraisalSchema = new schema({
         required: true
     }
 });
+
+module.exports = mongoose.model('Appraisal', appraisalSchema);

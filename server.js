@@ -4,8 +4,9 @@ var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var router = express.Router();
 const config = require('./app/config/database');
-
+var appRoutes = require('./app/routes/api')(router);
 
 // Middleware routes
 app.use(morgan('dev'));
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use('/api', appRoutes);
 
 // Database connection
 mongoose.connect(config.database, function(err) {

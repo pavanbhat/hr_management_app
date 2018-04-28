@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var bcrypt = require('bcrypt-nodejs');
 
 var employeeSchema = new schema({
     employeeId: {
@@ -56,3 +57,15 @@ var employeeSchema = new schema({
         ref: "Role"
     }
 });
+
+employeeSchema.pre('save', function(next) {
+    bcrypt.hash(this.password, null, null, function(err, hash) {
+        if (err) {
+            return next(err);
+        }
+        this.password = hash;
+        next();
+    });
+});
+
+module.exports = mongoose.model('Employee', employeeSchema);

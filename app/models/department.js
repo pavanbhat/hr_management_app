@@ -11,3 +11,5 @@ var departmentSchema = new schema({
         type: String
     }
 });
+
+module.exports = mongoose.model('Department', departmentSchema);

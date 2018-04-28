@@ -46,3 +46,5 @@ var salarySchema = new schema({
         required: true
     }
 });
+
+module.exports = mongoose.model('Salary', salarySchema);

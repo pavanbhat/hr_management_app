@@ -19,3 +19,5 @@ var timesheetShema = new schema({
         required
     }
 });
+
+module.exports = mongoose.model('Timesheet', timesheetShema);

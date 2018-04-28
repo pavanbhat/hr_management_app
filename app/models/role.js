@@ -10,3 +10,5 @@ var roleSchema = new schema({
         type: String
     }
 });
+
+module.exports = mongoose.model('Role', roleSchema);

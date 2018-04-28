@@ -22,3 +22,5 @@ var leaveSchema = new schema({
         required: true
     }
 });
+
+module.exports = mongoose.model('Leave', leaveSchema);
