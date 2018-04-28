@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var roleSchema = new schema({
-    roleId: {},
-    roleName: {},
-    roleDescription: {}
-})
+    roleName: {
+        type: String,
+        required: true
+    },
+    roleDescription: {
+        type: String
+    }
+});

@@ -2,9 +2,11 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var projectSchema = new schema({
-    projectId: {
-        type: String
+    projectName: {
+        type: String,
+        required: true
     },
-    projectName: {},
-    projectDescription: {}
+    projectDescription: {
+        type: String
+    }
 });
