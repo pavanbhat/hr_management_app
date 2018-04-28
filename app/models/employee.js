@@ -6,7 +6,6 @@ var uid = require('uniqid');
 var employeeSchema = new schema({
     employeeId: {
         type: String,
-        required: true,
         unique: true
     },
     username: {
@@ -27,8 +26,7 @@ var employeeSchema = new schema({
         type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
@@ -51,7 +49,6 @@ var employeeSchema = new schema({
     },
     roleId: {
         type: String,
-        required: true,
         ref: "Role"
     }
 });

@@ -17,7 +17,6 @@
              username: true,
              email: true,
              firstName: true,
-             lastName: true,
              gender: true,
              phoneNumber: true,
          }
@@ -26,9 +25,6 @@
          }
          if (employee.firstName === null || employee.firstName === '') {
              inputCheck['firstName'] = false;
-         }
-         if (employee.lastName === null || employee.lastName === '') {
-             inputCheck['lastName'] = false;
          }
          if (employee.email === null || employee.email === '') {
              inputCheck['email'] = false;
@@ -40,7 +36,7 @@
              inputCheck['phoneNumber'] = true;
          }
 
-         if (inputCheck['username'] && inputCheck['email'] && inputCheck['firstName'] && inputCheck['lastName'] && inputCheck['gender'] && inputCheck['phoneNumber']) {
+         if (inputCheck['username'] && inputCheck['email'] && inputCheck['firstName'] && inputCheck['gender'] && inputCheck['phoneNumber']) {
              employee.save(function(err) {
                  if (err) {
                      response.send("Employee already exits!" + err);
