@@ -64,9 +64,9 @@
                      message: 'There are no employees that could be found' + err
                  });
              } else {
-                 response.json({
+                 response.json(
                      foundEmployees
-                 });
+                 );
              }
          });
      });
