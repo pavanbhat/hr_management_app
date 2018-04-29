@@ -81,12 +81,15 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
   getEmployees(): void {
     this.employeeService.getEmployees().subscribe(employees => {
       this.employees = employees;
-      this.keys = Object.keys(this.employees[0]);
-      for (var _i = 0; _i < this.keys.length; _i++) {
-        if (this.keys[_i] === '_id' || this.keys[_i] === 'password' || this.keys[_i] === '__v') {
-          delete this.keys[_i];
+      if(this.employees.length > 0){
+        this.keys = Object.keys(this.employees[0]);
+        for (var _i = 0; _i < this.keys.length; _i++) {
+          if (this.keys[_i] === '_id' || this.keys[_i] === 'password' || this.keys[_i] === '__v') {
+            delete this.keys[_i];
+          }
         }
       }
+
       this.dataSource = new MatTableDataSource<Employee>(this.employees);
     });
   }
