@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var cors = require('cors');
 const config = require('./app/config/database');
 var employeeRoutes = require('./app/routes/employee')(router);
 
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(cors())
 app.use('/api/employee', employeeRoutes);
 
 // Database connection

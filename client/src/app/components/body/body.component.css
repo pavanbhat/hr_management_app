@@ -1,0 +1,12 @@
+.align-fabs {
+  padding: 2em;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.button-row {
+  padding-top: 2em;
+  padding-left: 4em;
+}
