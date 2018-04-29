@@ -1,8 +1,15 @@
 .footer-copy {
-  font-color: "#2196F3"
+  padding: 3em;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
-mat-toolbar{
-  position: absolute;
-  height: 10vh;
+.footer{
+  margin-top: 8em;
+  height: 15em;
+  background-color: black;
+  opacity: 20%;
+  color: springgreen;
+
 }

@@ -1,4 +1,9 @@
 .align-cards{
-  padding-top: 2em;
   padding-left: 1em;
+  max-width: 100%;
+}
+
+.Align{
+  padding-top: 20vh;
+  margin-bottom: 20vh;
 }
