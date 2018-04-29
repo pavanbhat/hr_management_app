@@ -1,4 +1,5 @@
  var Employee = require('../models/employee');
+ var Address = require('../models/address');
 
  module.exports = function(router) {
      router.post('/', function(request, response) {
@@ -61,7 +62,7 @@
          Employee.find({}, function(err, foundEmployees) {
              if (err) {
                  response.json({
-                     message: 'There are no employees that could be found' + err
+                     message: 'There are no employees that could be found: ' + err
                  });
              } else {
                  response.json(
