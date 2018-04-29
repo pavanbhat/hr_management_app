@@ -1,20 +1,22 @@
-<div class="align-cards">
-  <div *ngFor="let tile of tiles">
-    <div class="col s12 m3">
-      <div class="card horizontal">
-        <div class="card-stacked">
-          <div class="card-content">
-            <p>{{tile.text}}</p>
-          </div>
-          <div class="waves-effect card-action">
-            <a routerLink={{tile.link}}>Manage</a>
+<div class="Align">
+  <div class="align-cards">
+    <div *ngFor="let tile of tiles">
+      <div class="col s12 m3">
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>{{tile.text}}</p>
+            </div>
+            <div class="waves-effect card-action">
+              <a routerLink={{tile.link}}>Manage</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
+
 
 
 

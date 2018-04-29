@@ -5,6 +5,14 @@
   min-width: 300px;
 }
 
+h5{
+  text-decoration-style: wavy;
+  font-family: 'Arvo', serif;
+  color: #2196F3;
+  padding-left: 25px;
+  margin:0;
+  padding-bottom: 0;
+}
 .mat-table {
   overflow: auto;
   max-height: 500px;
