@@ -1,0 +1,8 @@
+.footer-copy {
+  font-color: "#2196F3"
+}
+
+mat-toolbar{
+  position: absolute;
+  height: 10vh;
+}
