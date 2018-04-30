@@ -27,6 +27,14 @@ export class EmployeeService {
   addEmployeeAddress(employee: Employee, address : Address) : Observable<Address> {
     return this.http.post<Address>(this.employeesURL + employee.employeeId + '/address', address);
   }
+
+  editEmployee(employee: Employee): Observable<Employee>{
+    return this.http.post<Employee>(this.employeesURL, employee);
+  }
+
+  editEmployeeAddress(employee: Employee, address : Address) : Observable<Address> {
+    return this.http.post<Address>(this.employeesURL + employee.employeeId + '/address', address);
+  }
 }
 
 

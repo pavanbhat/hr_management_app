@@ -4,6 +4,8 @@ import {DashboardComponent} from "./components/body/dashboard/dashboard.componen
 import {HrViewComponent} from "./components/body/hr-view/hr-view.component";
 import {AddEmployeeComponent} from "./components/body/hr-view/add-employee/add-employee.component";
 import {EmployeeViewComponent} from "./components/body/employee-view/employee-view.component";
+import {EditEmployeeComponent} from "./components/body/hr-view/edit-employee/edit-employee.component";
+import {DeleteEmployeeComponent} from "./components/body/admin-view/delete-employee/delete-employee.component";
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: 'hr/addEmployee',
     component: AddEmployeeComponent
+  },
+  {
+    path: 'hr/editEmployee',
+    component: EditEmployeeComponent
+  },
+  {
+    path: 'admin/deleteEmployee',
+    component: DeleteEmployeeComponent
   },
   {
     path: 'employee/:id',

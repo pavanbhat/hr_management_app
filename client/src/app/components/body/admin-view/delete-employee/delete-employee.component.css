@@ -1,0 +1,14 @@
+.delete-employee-title {
+  text-decoration-style: wavy;
+  font-family: 'Arvo', serif;
+  color: #2196F3;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+.center-sector {
+  align-items: center;
+  align-content: center;
+}

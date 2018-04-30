@@ -1,0 +1,45 @@
+.employee-card {
+  max-width: 215px;
+  height: 270px;
+  padding: 2em;
+  margin: 2em;
+  align-items: center;
+}
+
+.container {
+  margin-top: 2em;
+  margin-left: 0;
+}
+
+#bird{
+  width: 100%;
+}
+
+.outer-box{
+  display: flex;
+}
+.box {
+  flex: 1 1 auto;
+}
+
+.profile{
+  padding-left: 1em;
+  padding-top: 0;
+  margin-left: 3em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tab-title {
+  text-decoration-style: wavy;
+  font-family: 'Arvo', serif;
+  color: #2196F3;
+}
+
+.employee-tab-group {
+  border: 1px solid #e8e8e8;
+}
+
+.employee-tab-content {
+  padding: 16px;
+}

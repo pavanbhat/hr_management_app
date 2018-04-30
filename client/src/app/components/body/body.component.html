@@ -4,35 +4,30 @@
   </div>
   <div class="col-lg-2" *ngIf="router.url != '/dashboard'">
     <div [ngSwitch]="router.url">
-      <div *ngSwitchCase="/hr">
+      <div *ngSwitchCase="'/hr'">
         <span class="spacer"></span>
         <div class="button-row">
-          <button mat-fab color="warn"><i class="fas fa-2x fa-eye"></i></button>
-        </div>
         <div class="button-row">
-          <button mat-fab color="warn"><i class="fas fa-2x fa-edit"></i></button>
+          <button mat-fab color="warn" routerLink="/hr/editEmployee"><i class="fas fa-2x fa-edit"></i></button>
         </div>
         <div class="button-row">
           <button mat-fab color="warn" routerLink="/hr/addEmployee"><i class="fas fa-2x fa-plus"></i></button>
         </div>
-        <div class="button-row">
-          <button mat-fab color="warn"><i class="fas fa-2x fa-minus-circle"></i></button>
-        </div>
       </div>
-      <div *ngSwitchCase="/hr/addEmployee">
-          <span class="spacer"></span>
-          <div class="button-row">
-            <button mat-fab color="warn"><i class="fas fa-2x fa-eye"></i></button>
-          </div>
-          <div class="button-row">
-            <button mat-fab color="warn"><i class="fas fa-2x fa-edit"></i></button>
-          </div>
-          <div class="button-row">
-            <button mat-fab color="warn" routerLink="/hr/addEmployee"><i class="fas fa-2x fa-plus"></i></button>
-          </div>
-          <div class="button-row">
-            <button mat-fab color="warn"><i class="fas fa-2x fa-minus-circle"></i></button>
-          </div>
+      <div *ngSwitchCase="'/admin'">
+        <span class="spacer"></span>
+        <div class="button-row">
+          <button mat-fab color="warn" hidden><i class="fas fa-2x fa-eye"></i></button>
+        </div>
+        <div class="button-row">
+          <button mat-fab color="warn" routerLink="/admin/editEmployee"><i class="fas fa-2x fa-edit"></i></button>
+        </div>
+        <div class="button-row">
+          <button mat-fab color="warn" routerLink="/admin/addEmployee"><i class="fas fa-2x fa-plus"></i></button>
+        </div>
+        <div class="button-row">
+          <button mat-fab color="warn" routerLink="/admin/deleteEmployee"><i class="fas fa-2x fa-minus-circle"></i></button>
+        </div>
       </div>
     </div>
   </div>

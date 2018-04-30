@@ -19,8 +19,7 @@ import {
   MatSelectModule,
   MatFormFieldModule,
   MatDatepickerModule,
-  MatNativeDateModule,
-  MAT_LABEL_GLOBAL_OPTIONS,
+  MatNativeDateModule, MatTabsModule,
 } from "@angular/material";
 import { DashboardComponent } from './components/body/dashboard/dashboard.component';
 import { BodyComponent } from './components/body/body.component';
@@ -34,6 +33,8 @@ import { HrViewComponent } from './components/body/hr-view/hr-view.component';
 import { EmployeeViewComponent } from './components/body/employee-view/employee-view.component';
 import { AddEmployeeComponent } from './components/body/hr-view/add-employee/add-employee.component';
 import {FormsModule} from "@angular/forms";
+import { EditEmployeeComponent } from './components/body/hr-view/edit-employee/edit-employee.component';
+import {DeleteEmployeeComponent} from "./components/body/admin-view/delete-employee/delete-employee.component";
 
 
 @NgModule({
@@ -47,7 +48,9 @@ import {FormsModule} from "@angular/forms";
     AdminViewComponent,
     HrViewComponent,
     EmployeeViewComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import {FormsModule} from "@angular/forms";
     MatSelectModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTabsModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent] ,

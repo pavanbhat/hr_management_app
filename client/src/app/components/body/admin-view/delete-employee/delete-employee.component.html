@@ -1,0 +1,22 @@
+<div class="container">
+  <h5 align="center" class="delete-employee-title">
+    Delete Employee from DATIS
+  </h5>
+  <div class="center-sector">
+    <div class="row">
+      <mat-form-field>
+        <mat-select placeholder="Select Employee">
+          <mat-option *ngFor="let employee of employees" [value]="employee.email">
+            {{employee.firstName}}&nbsp;{{employee.lastName}}&nbsp;({{employee.email}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div align="center">
+    <button mat-button (click)="onNoClick()" class="btn btn-success">SUMBIT</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">CANCEL</button>
+  </div>
+</div>
+
+
