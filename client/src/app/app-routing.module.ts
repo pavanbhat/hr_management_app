@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {DashboardComponent} from "./components/body/dashboard/dashboard.component";
-import {EmployeeComponent} from "./components/body/employee/employee.component";
+import {HrViewComponent} from "./components/body/hr-view/hr-view.component";
+import {AddEmployeeComponent} from "./components/body/hr-view/add-employee/add-employee.component";
 
 const routes: Routes = [
   {
@@ -14,8 +15,12 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'employees',
-    component: EmployeeComponent
+    path: 'hr',
+    component: HrViewComponent
+  },
+  {
+    path: 'addEmployee',
+    component: AddEmployeeComponent
   }
 ];
 
