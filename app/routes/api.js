@@ -172,19 +172,280 @@ module.exports = function (router) {
 
     // Role GET: Gets the role of a particular employee from the database.
     router.get('/employee/:id/role', function(request, response) {
-        Role.find({employeeId: request.params.id} , function(err, foundRole) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
             if (err) {
                 response.json({
                     message: 'This employee does not have a role that could be found: ' + err
                 });
             } else {
-                response.json(
-                    foundRole
-                );
+                Role.find({roleId: foundEmployee.roleId}, function (err, foundRole) {
+                       if(err){
+                           response.json({
+                               message: 'This role doesn\'t exist!: ' + err
+                           });
+                       }else{
+                           response.json(
+                               foundRole
+                           );
+                       }
+                });
             }
         });
     });
 
+    // Department POST: Posts department of a particular employee in to the database
+    router.post('/employee/:id/department', function(request, response) {
+        var department = new Department();
+        department.departmentId = request.body.departmentId;
+        department.departmentName = request.body.departmentName;
+        department.departmentDescription = request.body.departmentDescription;
+
+        department.save(function(err) {
+            if (err) {
+                response.send("Error populating department!" + err);
+            } else {
+                response.json(department);
+            }
+        });
+    });
+
+    // Department GET: Gets the department of a particular employee from the database.
+    router.get('/employee/:id/department', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a department that could be found: ' + err
+                });
+            } else {
+                Department.find({departmentId: foundEmployee.departmentId}, function (err, foundDepartment) {
+                    if(err){
+                        response.json({
+                            message: 'This department doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundDepartment
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Project POST: Posts project of a particular employee in to the database
+    router.post('/employee/:id/project', function(request, response) {
+        var project = new Project();
+        project.projectId = request.body.projectId;
+        project.projectName = request.body.projectName;
+        project.projectDescription = request.body.projectDescription;
+
+        project.save(function(err) {
+            if (err) {
+                response.send("Error populating project!" + err);
+            } else {
+                response.json(project);
+            }
+        });
+    });
+
+    // Project GET: Gets the project of a particular employee from the database.
+    router.get('/employee/:id/project', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a project that could be found: ' + err
+                });
+            } else {
+                Project.find({projectId: foundEmployee.projectId}, function (err, foundProject) {
+                    if(err){
+                        response.json({
+                            message: 'This project doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundProject
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Appraisal POST: Posts appraisal of a particular employee in to the database
+    router.post('/employee/:id/appraisal', function(request, response) {
+        var appraisal = new Appraisal();
+        appraisal.appraisalId = request.body.appraisalId;
+        appraisal.employeeId = request.body.employeeId;
+        appraisal.managerId = request.body.managerId;
+        appraisal.communicationPoints = request.body.communicationPoints;
+        appraisal.teamPoints = request.body.teamPoints;
+        appraisal.clientPoints = request.body.clientPoints;
+        appraisal.totalScore = request.body.totalScore;
+
+        appraisal.save(function(err) {
+            if (err) {
+                response.send("Error populating appraisal!" + err);
+            } else {
+                response.json(appraisal);
+            }
+        });
+    });
+
+    // Appraisal GET: Gets the appraisal of a particular employee from the database.
+    router.get('/employee/:id/appraisal', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have an appraisal that could be found: ' + err
+                });
+            } else {
+                Project.find({appraisalId: foundEmployee.appraisalId}, function (err, foundAppraisal) {
+                    if(err){
+                        response.json({
+                            message: 'This appraisal doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundAppraisal
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Leave POST: Posts leave of a particular employee in to the database
+    router.post('/employee/:id/leave', function(request, response) {
+        var leave = new Leave();
+        leave.leaveId = request.body.leaveId;
+        leave.employeeId = request.body.employeeId;
+        leave.leaveReason = request.body.leaveReason;
+        leave.leaveFrom = request.body.leaveFrom;
+        leave.leaveTo = request.body.leaveTo;
+        leave.leaveStatus = request.body.leaveStatus;
+
+        leave.save(function(err) {
+            if (err) {
+                response.send("Error populating leave!" + err);
+            } else {
+                response.json(leave);
+            }
+        });
+    });
+
+    // Leave GET: Gets the leave of a particular employee from the database.
+    router.get('/employee/:id/leave', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a leave that could be found: ' + err
+                });
+            } else {
+                Project.find({leaveId: foundEmployee.leaveId}, function (err, foundLeave) {
+                    if(err){
+                        response.json({
+                            message: 'This leave doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundLeave
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Salary POST: Posts salary of a particular employee in to the database
+    router.post('/employee/:id/salary', function(request, response) {
+        var salary = new Salary();
+        salary.salaryId = request.body.salaryId;
+        salary.employeeId = request.body.employeeId;
+        salary.workingDays = request.body.workingDays;
+        salary.basicSalary = request.body.basicSalary;
+        salary.hra = request.body.hra;
+        salary.mediclaim = request.body.mediclaim;
+        salary.dearnessAllowance = request.body.dearnessAllowance;
+        salary.travelAllowance = request.body.travelAllowance;
+        salary.reimbursements = request.body.reimbursements;
+        salary.providentFund = request.body.providentFund;
+        salary.totalDeductions = request.body.totalDeductions;
+        salary.tax = request.body.tax;
+        salary.other = request.body.other;
+        salary.totalSalary = request.body.totalSalary;
+
+        salary.save(function(err) {
+            if (err) {
+                response.send("Error populating salary!" + err);
+            } else {
+                response.json(salary);
+            }
+        });
+    });
+
+    // Salary GET: Gets the salary of a particular employee from the database.
+    router.get('/employee/:id/salary', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a salary that could be found: ' + err
+                });
+            } else {
+                Salary.find({salaryId: foundEmployee.salaryId}, function (err, foundSalary) {
+                    if(err){
+                        response.json({
+                            message: 'This salary doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundSalary
+                        );
+                    }
+                });
+            }
+        });
+    });
+
+    // Timesheet POST: Posts timesheet of a particular employee in to the database
+    router.post('/employee/:id/timesheet', function(request, response) {
+        var timesheet = new Timesheet();
+        timesheet.timesheetId = request.body.timesheetId;
+        timesheet.employeeId = request.body.employeeId;
+        timesheet.projectId = request.body.projectId;
+        timesheet.date = request.body.date;
+        timesheet.numberOfHours = request.body.numberOfHours;
+
+        timesheet.save(function(err) {
+            if (err) {
+                response.send("Error populating timesheet!" + err);
+            } else {
+                response.json(timesheet);
+            }
+        });
+    });
+
+    // Timesheet GET: Gets the timesheet of a particular employee from the database.
+    router.get('/employee/:id/timesheet', function(request, response) {
+        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a timesheet that could be found: ' + err
+                });
+            } else {
+                Timesheet.find({timesheetId: foundEmployee.timesheetId}, function (err, foundTimesheet) {
+                    if(err){
+                        response.json({
+                            message: 'This timesheet doesn\'t exist!: ' + err
+                        });
+                    }else{
+                        response.json(
+                            foundTimesheet
+                        );
+                    }
+                });
+            }
+        });
+    });
 
     return router;
 }

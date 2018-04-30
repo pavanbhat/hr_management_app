@@ -7,8 +7,8 @@ import {Address} from "../models/address";
 @Injectable()
 export class EmployeeService {
 
-  // private employeesURL = 'http://localhost:8080/api/employee';
-  private employeesURL = 'https://ancient-anchorage-61012.herokuapp.com/api/employee';
+  private employeesURL = 'http://localhost:8080/api/employee';
+  // private employeesURL = 'https://ancient-anchorage-61012.herokuapp.com/api/employee';
 
   constructor(private http: HttpClient) {
   }
