@@ -5,65 +5,65 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
   </div>
-  <mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+  <mat-table #table [dataSource]="dataSource" matSort>
 
     <!-- Employee ID Column -->
     <ng-container matColumnDef="employeeId">
-      <mat-header-cell *matHeaderCellDef> Employee ID</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.employeeId}}</mat-cell>
     </ng-container>
 
     <!-- UserName Column -->
     <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef> Username</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.username}}</mat-cell>
     </ng-container>
 
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef> First Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> First Name</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.firstName}}</mat-cell>
     </ng-container>
 
     <!-- Middle Name Column -->
     <ng-container matColumnDef="middleName">
-      <mat-header-cell *matHeaderCellDef> Middle Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Middle Name</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.middleName}}</mat-cell>
     </ng-container>
 
     <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef> Last Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.lastName}}</mat-cell>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
     </ng-container>
 
     <!-- Gender Column -->
     <ng-container matColumnDef="gender">
-      <mat-header-cell *matHeaderCellDef> Gender</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Gender</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.gender}}</mat-cell>
     </ng-container>
 
     <!-- Date of Birth Column -->
     <ng-container matColumnDef="dateOfBirth">
-      <mat-header-cell *matHeaderCellDef> Date of Birth</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.dateOfBirth}}</mat-cell>
     </ng-container>
 
     <!-- Phone Number Column -->
     <ng-container matColumnDef="phoneNumber">
-      <mat-header-cell *matHeaderCellDef> Phone Number</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.phoneNumber}}</mat-cell>
     </ng-container>
 
     <!-- Role ID Column -->
     <ng-container matColumnDef="roleId">
-      <mat-header-cell *matHeaderCellDef> Role ID</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Role ID</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.roleId}}</mat-cell>
     </ng-container>
 
