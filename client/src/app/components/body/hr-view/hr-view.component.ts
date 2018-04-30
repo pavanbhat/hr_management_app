@@ -4,11 +4,11 @@ import {Employee} from "../../../models/employee";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Sort} from '@angular/material';
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  selector: 'app-hr-view',
+  templateUrl: './hr-view.component.html',
+  styleUrls: ['./hr-view.component.css']
 })
-export class EmployeeComponent implements OnInit, AfterViewInit {
+export class HrViewComponent implements OnInit, AfterViewInit {
 
   employees: Employee[] = [];
   keys: any = [];
@@ -45,30 +45,30 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
 
     this.sortedData = data.sort((a, b) => {
       let isAsc = sort.direction == 'asc';
-        switch (sort.active) {
-          case 'employeeId':
-            return this.compare(a.employeeId, b.employeeId, isAsc);
-          case 'username':
-            return this.compare(a.username, b.username, isAsc);
-          case 'firstName':
-            return this.compare(a.firstName, b.firstName, isAsc);
-          case 'middleName':
-            return this.compare(a.middleName, b.middleName, isAsc);
-          case 'lastName':
-            return this.compare(a.lastName, b.lastName, isAsc);
-          case 'email':
-            return this.compare(a.email, b.email, isAsc);
-          case 'gender':
-            return this.compare(a.gender, b.gender, isAsc);
-          case 'dateOfBirth':
-            return this.compare(a.dateOfBirth, b.dateOfBirth, isAsc);
-          case 'phoneNumber':
-            return this.compare(a.phoneNumber, b.phoneNumber, isAsc);
-          case 'roleId':
-            return this.compare(a.roleId, b.roleId, isAsc);
-          default:
-            return 0;
-        }
+      switch (sort.active) {
+        case 'employeeId':
+          return this.compare(a.employeeId, b.employeeId, isAsc);
+        case 'username':
+          return this.compare(a.username, b.username, isAsc);
+        case 'firstName':
+          return this.compare(a.firstName, b.firstName, isAsc);
+        case 'middleName':
+          return this.compare(a.middleName, b.middleName, isAsc);
+        case 'lastName':
+          return this.compare(a.lastName, b.lastName, isAsc);
+        case 'email':
+          return this.compare(a.email, b.email, isAsc);
+        case 'gender':
+          return this.compare(a.gender, b.gender, isAsc);
+        case 'dateOfBirth':
+          return this.compare(a.dateOfBirth, b.dateOfBirth, isAsc);
+        case 'phoneNumber':
+          return this.compare(a.phoneNumber, b.phoneNumber, isAsc);
+        case 'roleId':
+          return this.compare(a.roleId, b.roleId, isAsc);
+        default:
+          return 0;
+      }
 
     });
   }

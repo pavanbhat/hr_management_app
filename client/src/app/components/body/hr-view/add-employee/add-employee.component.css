@@ -1,0 +1,18 @@
+.employee-form {
+  width: 100%;
+}
+
+.employee-full-width {
+  width: 100%;
+}
+
+#gender {
+  border-bottom: black 1px solid;
+  text-decoration: none;
+}
+
+.flexor {
+  padding-left: 40%;
+  align-items: center;
+  flex: 1 1 auto;
+}

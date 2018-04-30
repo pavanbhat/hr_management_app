@@ -8,7 +8,30 @@
               <p>{{tile.text}}</p>
             </div>
             <div class="waves-effect card-action">
-              <a routerLink={{tile.link}}>Manage</a>
+              <div *ngIf="tile.link === '/hr'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/roles'">
+                <a (click)="openRoleDialog()">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/departments'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/projects'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/salary'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/timesheet'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/leaves'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/appraisal'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
             </div>
           </div>
         </div>

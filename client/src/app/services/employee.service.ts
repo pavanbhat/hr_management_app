@@ -15,6 +15,13 @@ export class EmployeeService {
     return this.http.get<Employee []>(this.employeesURL);
   }
 
+  getEmployee(employeeId: string): Observable<Employee>{
+    return this.http.get<Employee>(this.employeesURL);
+  }
+
+  getEmployee(employeeId: string): Observable<Employee>{
+    return this.http.get<Employee>(this.employeesURL);
+  }
 }
 
 

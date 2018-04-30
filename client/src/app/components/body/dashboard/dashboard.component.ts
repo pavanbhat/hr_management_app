@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from "@angular/material";
+import {RoleDialogComponent} from "./role-dialog/role-dialog.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public employeeRoleDialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  openRoleDialog(): void {
+    this.employeeRoleDialog.open(RoleDialogComponent, {
+      width :  '500px'
+    });
+  }
+
   tiles = [
-    {text: 'Employee Management', color: 'lightgreen', link: '/employees'},
+    {text: 'Employee Management', color: 'lightgreen', link: '/hr'},
     {text: 'Role Management', color: 'lightgreen', link: '/roles'},
     {text: 'Department Management', color: 'lightgreen', link: '/departments'},
     {text: 'Project Management', color: 'lightgreen', link: '/projects'},
