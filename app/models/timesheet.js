@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var uid = require('uniqid');
 
 var timesheetShema = new schema({
+    timesheetId: {
+        type: String,
+        unique: true
+    },
     employeeId: {
         type: String,
         ref: "Employee",
@@ -18,8 +23,13 @@ var timesheetShema = new schema({
     },
     numberOfHours: {
         type: Number,
-        required
+        required : true
     }
+});
+
+timesheetShema.pre('save', function(next) {
+    this.timesheetId = uid();
+    next();
 });
 
 module.exports = mongoose.model('Timesheet', timesheetShema);

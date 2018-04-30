@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var uid = require('uniqid');
 
 var leaveSchema = new schema({
+    leaveId: {
+        type: String,
+        unique: true
+    },
     employeeId: {
         type: String,
         ref: "Employee",
@@ -13,7 +18,7 @@ var leaveSchema = new schema({
     },
     leaveFrom: {
         type: Date,
-        default: Data.now
+        default: Date.now
     },
     leaveTo: {
         type: Date
@@ -22,6 +27,11 @@ var leaveSchema = new schema({
         type: Boolean,
         required: true
     }
+});
+
+leaveSchema.pre('save', function(next) {
+    this.leaveId = uid();
+    next();
 });
 
 module.exports = mongoose.model('Leave', leaveSchema);

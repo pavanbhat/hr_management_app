@@ -31,6 +31,10 @@ export class AddEmployeeComponent implements OnInit {
     this.http.post<Employee>(this.employeesPostURL, this.employee).subscribe(employeeObserver =>{
        this.employee = employeeObserver[0];
        this.address.employeeId = this.employee.employeeId;
+       for(let key of Object.keys(this.address)){
+         console.log(key + " " + this.address[key]);
+       }
+
        this.http.post<Address>(this.employeesPostURL + this.employee.employeeId + '/address', this.address).subscribe(addressObserver => {
          this.address = addressObserver;
          this.router.navigate(['/hr']);

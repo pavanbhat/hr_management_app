@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var uid = require('uniqid');
 
 var departmentSchema = new schema({
     departmentId: {
         type: String,
-        ref: "Employee",
-        required: true
+        unique: true
     },
     departmentName: {
         type: String,
@@ -15,6 +15,11 @@ var departmentSchema = new schema({
     departmentDescription: {
         type: String
     }
+});
+
+departmentSchema.pre('save', function(next) {
+    this.departmentId = uid();
+    next();
 });
 
 module.exports = mongoose.model('Department', departmentSchema);

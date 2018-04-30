@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var uid = require('uniqid');
 
 var addressSchema = new schema({
+    addressId: {
+        type: String,
+        unique: true
+    },
     employeeId: {
         type: String,
         ref: "Employee",
@@ -26,6 +31,11 @@ var addressSchema = new schema({
     zip: {
         type: Number
     }
+});
+
+addressSchema.pre('save', function(next) {
+    this.addressId = uid();
+    next();
 });
 
 module.exports = mongoose.model('Address', addressSchema);

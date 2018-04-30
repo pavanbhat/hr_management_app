@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var uid = require('uniqid');
 
 var salarySchema = new schema({
+    salaryId: {
+        type: String,
+        unique: true
+    },
     employeeId: {
         type: String,
         ref: "Employee",
@@ -46,6 +51,11 @@ var salarySchema = new schema({
         type: Number,
         required: true
     }
+});
+
+salarySchema.pre('save', function(next) {
+    this.salaryId = uid();
+    next();
 });
 
 module.exports = mongoose.model('Salary', salarySchema);

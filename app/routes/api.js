@@ -1,8 +1,17 @@
 var Employee = require('../models/employee');
 var Address = require('../models/address');
+var Department = require('../models/department');
+var Leave = require('../models/leave');
+var Project = require('../models/project');
+var Role = require('../models/role');
+var Salary = require('../models/salary');
+var Timesheet = require('../models/timesheet');
+var Appraisal = require('../models/appraisal');
 
 module.exports = function (router) {
-    router.post('/', function (request, response) {
+
+    //Employee POST:
+    router.post('/employee', function (request, response) {
         var employee = new Employee();
         employee.username = request.body.username;
         employee.firstName = request.body.firstName;
@@ -38,10 +47,8 @@ module.exports = function (router) {
         }
 
         if (inputCheck['username'] && inputCheck['email'] && inputCheck['firstName'] && inputCheck['gender'] && inputCheck['phoneNumber']) {
-            console.log(String(employee));
             employee.save(function (err) {
                 if (err) {
-                    console.log(err);
                     response.send("Employee already exits!" + err);
                 } else {
                     Employee.find({email: employee.email}, function (err, foundEmployeeWithEmail) {
@@ -70,7 +77,7 @@ module.exports = function (router) {
 
     });
 
-    router.get('/', function (request, response) {
+    router.get('/employee', function (request, response) {
         Employee.find({}, function (err, foundEmployees) {
             if (err) {
                 response.json({
@@ -108,6 +115,41 @@ module.exports = function (router) {
                     "employee": this.employee,
                     "address": this.address
                 });
+            }
+        });
+    });
+
+
+    router.post('/employee/:id/address', function(request, response) {
+        var address = new Address();
+        address.employeeId = request.body.employeeId;
+        address.street = request.body.street;
+        address.city = request.body.city;
+        address.state = request.body.state;
+        address.country = request.body.country;
+        address.zip = request.body.zip;
+        
+        address.save(function(err) {
+            if (err) {
+                response.send("Error populating address!" + err);
+            } else {
+                response.json(address);
+            }
+        });
+    });
+
+    // Get address of a particular employee
+    router.get('/employee/:id/address', function(request, response) {
+        Address.find({employeeId: request.params.id} , function(err, foundAddress) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have an address that could be found: ' + err
+                });
+            } else {
+                console.log(String(foundAddress));
+                response.json(
+                    foundAddress
+                );
             }
         });
     });
