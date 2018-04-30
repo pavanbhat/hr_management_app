@@ -1,21 +1,34 @@
-import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {EmployeeService} from "../../../services/employee.service";
 import {Employee} from "../../../models/employee";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatSort, MatTableDataSource, PageEvent} from "@angular/material";
 import {Sort} from '@angular/material';
+
+
 @Component({
   selector: 'app-hr-view',
   templateUrl: './hr-view.component.html',
   styleUrls: ['./hr-view.component.css']
 })
-export class HrViewComponent implements OnInit, AfterViewInit {
+export class HrViewComponent implements OnInit {
 
   employees: Employee[] = [];
   keys: any = [];
-  private dataSource: MatTableDataSource<Employee>;
+  dataSource: MatTableDataSource<Employee>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   private sortedData;
+
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   constructor(private employeeService: EmployeeService) {
     this.sortedData = this.employees.slice();
@@ -25,10 +38,6 @@ export class HrViewComponent implements OnInit, AfterViewInit {
     this.getEmployees();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -89,8 +98,9 @@ export class HrViewComponent implements OnInit, AfterViewInit {
           }
         }
       }
-
       this.dataSource = new MatTableDataSource<Employee>(this.employees);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
