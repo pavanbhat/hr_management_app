@@ -5,7 +5,6 @@ var uid = require('uniqid');
 var departmentSchema = new schema({
     departmentId: {
         type: String,
-        unique: true
     },
     departmentName: {
         type: String,

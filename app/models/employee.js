@@ -50,6 +50,10 @@ var employeeSchema = new schema({
     roleId: {
         type: String,
         ref: "Role"
+    },
+    departmentId: {
+        type: String,
+        ref: "Role"
     }
 });
 

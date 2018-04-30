@@ -10,7 +10,7 @@ var Appraisal = require('../models/appraisal');
 
 module.exports = function (router) {
 
-    //Employee POST:
+    //Employee POST: Adds Employee information to the database.
     router.post('/employee', function (request, response) {
         var employee = new Employee();
         employee.username = request.body.username;
@@ -77,6 +77,7 @@ module.exports = function (router) {
 
     });
 
+    // Employee GET: Gets all employee information from the database
     router.get('/employee', function (request, response) {
         Employee.find({}, function (err, foundEmployees) {
             if (err) {
@@ -91,7 +92,7 @@ module.exports = function (router) {
         });
     });
 
-    // Get
+    // Employee GET: Gets information of a particular employee from the database.
     router.get('/employee/:id', function (request, response) {
         let employee = new Employee();
         Employee.find({employeeId: request.params.id}, function (err, foundEmployee) {
@@ -119,7 +120,7 @@ module.exports = function (router) {
         });
     });
 
-
+    // Address POST: Posts address of a particular employee in to the database
     router.post('/employee/:id/address', function(request, response) {
         var address = new Address();
         address.employeeId = request.body.employeeId;
@@ -138,7 +139,7 @@ module.exports = function (router) {
         });
     });
 
-    // Get address of a particular employee
+    // Address GET: Gets the address of a particular employee from the database.
     router.get('/employee/:id/address', function(request, response) {
         Address.find({employeeId: request.params.id} , function(err, foundAddress) {
             if (err) {
@@ -146,13 +147,44 @@ module.exports = function (router) {
                     message: 'This employee does not have an address that could be found: ' + err
                 });
             } else {
-                console.log(String(foundAddress));
                 response.json(
                     foundAddress
                 );
             }
         });
     });
+
+    // Role POST: Posts role of a particular employee in to the database
+    router.post('/employee/:id/role', function(request, response) {
+        var role = new Role();
+        role.roleId = request.body.roleId;
+        role.roleName = request.body.roleName;
+        role.roleDescription = request.body.roleDescription;
+
+        role.save(function(err) {
+            if (err) {
+                response.send("Error populating role!" + err);
+            } else {
+                response.json(role);
+            }
+        });
+    });
+
+    // Role GET: Gets the role of a particular employee from the database.
+    router.get('/employee/:id/role', function(request, response) {
+        Role.find({employeeId: request.params.id} , function(err, foundRole) {
+            if (err) {
+                response.json({
+                    message: 'This employee does not have a role that could be found: ' + err
+                });
+            } else {
+                response.json(
+                    foundRole
+                );
+            }
+        });
+    });
+
 
     return router;
 }
