@@ -21,8 +21,15 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   addEmployee(): void{
+    /*for(let key of Object.keys(this.employee)){
+      console.log(key + this.employee[key]);
+
+    }
+    Object.keys(this.address).forEach(key=>{
+      console.log(key+" "+this.address[key]);
+    })*/
     this.http.post<Employee>(this.employeesPostURL, this.employee).subscribe(employeeObserver =>{
-       this.employee = employeeObserver;
+       this.employee = employeeObserver[0];
        this.address.employeeId = this.employee.employeeId;
        this.http.post<Address>(this.employeesPostURL + this.employee.employeeId + '/address', this.address).subscribe(addressObserver => {
          this.address = addressObserver;

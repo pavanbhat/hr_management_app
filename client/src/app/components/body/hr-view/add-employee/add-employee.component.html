@@ -77,7 +77,7 @@
           </td>
           <td>
             <fieldset class="employee-full-width">
-              <input id="email" matInput placeholder="Email" name="email" [(ngModel)]='employee.email' required>
+              <input id="email" matInput placeholder="Email" name="email" type="email" [(ngModel)]='employee.email' required>
               <label for="email">Email ID</label>
             </fieldset>
           </td>
@@ -85,8 +85,7 @@
         <tr>
           <td>
             <fieldset>
-              <mat-select id="gender" placeholder="Gender">
-                <mat-option selected>Choose...</mat-option>
+              <mat-select id="gender" placeholder="Gender" [ngModelOptions]="{standalone: true}" [(ngModel)]='employee.gender'>
                 <mat-option *ngFor="let gender of genders" [value]='gender' (onSelectionChange)="gender">
                   {{gender}}
                 </mat-option>

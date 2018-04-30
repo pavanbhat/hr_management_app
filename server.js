@@ -15,6 +15,7 @@ var employeeTimesheetRoutes = require('./app/routes/timesheet')(router);
 var employeeDepartmentRoutes = require('./app/routes/department')(router);
 var employeeLeaveRoutes = require('./app/routes/leave')(router);
 var employeeAppraisalRoutes = require('./app/routes/appraisal')(router);
+var employeeAddressRoutes = require('./app/routes/address')(router);
 
 
 // Middleware routes
@@ -30,6 +31,7 @@ app.use('/api/employee/timesheet', employeeTimesheetRoutes);
 app.use('/api/employee/department', employeeDepartmentRoutes);
 app.use('/api/employee/leave', employeeLeaveRoutes);
 app.use('/api/employee/appraisal', employeeAppraisalRoutes);
+app.use('/api/employee/:id/address', employeeAddressRoutes);
 
 // Database connection
 mongoose.connect(config.database, function (err) {
