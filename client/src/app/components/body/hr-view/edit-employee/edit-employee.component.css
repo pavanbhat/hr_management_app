@@ -1,3 +1,9 @@
+.edit-employee-title {
+  text-decoration-style: wavy;
+  font-family: 'Arvo', serif;
+  color: #2196F3;
+}
+
 .employee-form {
   width: 100%;
 }
