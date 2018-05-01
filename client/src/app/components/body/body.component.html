@@ -8,18 +8,25 @@
         <span class="spacer"></span>
         <div class="button-row">
           <div class="button-row">
-            <button mat-fab color="warn" routerLink="/hr/editEmployee"><i class="fas fa-2x fa-edit"></i></button>
+            <button mat-fab color="warn" routerLink="/dashboard"><i class="fas fa-2x fa-eye"></i></button>
+          </div>
+          <div class="button-row">
+            <button mat-fab color="warn" (click)="openEmployeeDialog()"><i class="fas fa-2x fa-edit"></i></button>
           </div>
           <div class="button-row">
             <button mat-fab color="warn" routerLink="/hr/addEmployee"><i class="fas fa-2x fa-plus"></i></button>
+          </div>
+          <div class="button-row">
+            <button mat-fab color="warn" (click)="openEmployeeDeleteDialog()"><i class="fas fa-2x fa-minus-circle"></i>
+            </button>
           </div>
         </div>
       </div>
       <div *ngSwitchCase="'/hr/editEmployee'">
         <span class="spacer"></span>
-          <div class="button-row">
-            <button mat-fab color="warn" routerLink="/hr"><i class="fas fa-2x fa-eye"></i></button>
-          </div>
+        <div class="button-row">
+          <button mat-fab color="warn" routerLink="/hr"><i class="fas fa-2x fa-eye"></i></button>
+        </div>
       </div>
       <div *ngSwitchCase="'/hr/addEmployee'">
         <span class="spacer"></span>
@@ -27,26 +34,10 @@
           <button mat-fab color="warn" routerLink="/hr"><i class="fas fa-2x fa-eye"></i></button>
         </div>
       </div>
-      <div *ngSwitchCase="'/admin'">
-        <span class="spacer"></span>
+      <div *ngSwitchCase="'/hr/deleteEmployee'">
         <div class="button-row">
-          <button mat-fab color="warn" hidden><i class="fas fa-2x fa-eye"></i></button>
-        </div>
-        <div class="button-row">
-          <button mat-fab color="warn" routerLink="/admin/editEmployee"><i class="fas fa-2x fa-edit"></i></button>
-        </div>
-        <div class="button-row">
-          <button mat-fab color="warn" routerLink="/admin/addEmployee"><i class="fas fa-2x fa-plus"></i></button>
-        </div>
-        <div class="button-row">
-          <button mat-fab color="warn" routerLink="/admin/deleteEmployee"><i class="fas fa-2x fa-minus-circle"></i>
+          <button mat-fab color="warn" routerLink="/hr"><i class="fas fa-2x fa-minus-circle"></i>
           </button>
-        </div>
-      </div>
-      <div *ngSwitchCase="'/admin/deleteEmployee'">
-        <span class="spacer"></span>
-        <div class="button-row">
-          <button mat-fab color="warn" routerLink="/admin"><i class="fas fa-2x fa-eye"></i></button>
         </div>
       </div>
     </div>

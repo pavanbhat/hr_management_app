@@ -10,47 +10,114 @@
            </span>
           </div>
         </div>
-        <div >
+        <div>
          <span class="profile">
-           <mat-card-title>Employee Name</mat-card-title>
-           <mat-card-subtitle>Employee Id</mat-card-subtitle>
+           <mat-card-title>{{selectedEmployee.firstName}} {{selectedEmployee.middleName}} {{selectedEmployee.lastName}}</mat-card-title>
+           <mat-card-subtitle># {{selectedEmployee.employeeId}}</mat-card-subtitle>
           </span>
         </div>
       </div>
     </mat-card-header>
   </mat-card>
   <div class="container">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+      </mat-toolbar-row>
+    </mat-toolbar>
     <mat-card>
       <mat-card-content>
         <h4 class="tab-title">Employee Details</h4>
+
         <mat-tab-group class="demo-tab-group">
-          <mat-tab label="Personal">
+          <mat-tab label="Personal" routerLink="/employee/:id/personal">
             <div class="demo-tab-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-              Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-              In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-              feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-              orci enim rutrum enim, vel tempor sapien arcu a tellus.
+              <table align="center" class="personalTable">
+                <tr>
+                  <th>
+                    Username
+                  </th>
+                  <th>
+                    Email
+                  </th>
+                  <th>
+                    Gender
+                  </th>
+                  <th>
+                    Date of Birth
+                  </th>
+                  <th>
+                    Phone Number
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    {{selectedEmployee.username}}
+                  </td>
+                  <td>
+                    {{selectedEmployee.email}}
+                  </td>
+                  <td>
+                    {{selectedEmployee.gender}}
+                  </td>
+                  <td>
+                    {{selectedEmployee.dateOfBirth}}
+                  </td>
+                  <td>
+                    {{selectedEmployee.phoneNumber}}
+                  </td>
+                </tr>
+              </table>
             </div>
           </mat-tab>
           <mat-tab label="Salary">
             <div class="employee-tab-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-              Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-              In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-              feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-              orci enim rutrum enim, vel tempor sapien arcu a tellus.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
-              Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
-              In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-              feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
-              orci enim rutrum enim, vel tempor sapien arcu a tellus.
+              <div class="row">
+                <div class="col-lg-6" align="center">
+                  <div class="row">Salary ID </div>
+                  <div class="row">WorkingDays</div>
+                  <div class="row">BasicSalary</div>
+                  <div class="row">HRA</div>
+                  <div class="row">Mediclaim</div>
+                  <div class="row">Dearness Allowance</div>
+                  <div class="row">Travel Allowance</div>
+                  <div class="row">Reimbursements</div>
+                  <div class="row">Provident Fund</div>
+                  <div class="row">Total Deductions</div>
+                  <div class="row">Tax</div>
+                  <div class="row">Other</div>
+                  <div class="row">Total Salary</div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="row"># {{selectedEmployeeSalary.salaryId}}</div>
+                  <div class="row">{{selectedEmployeeSalary.workingDays}} days</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.basicSalary}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.hra}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.mediclaim}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.dearnessAllowance}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.travelAllowance}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.reimbursements}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.providentFund}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.totalDeductions}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.tax}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.other}}</div>
+                  <div class="row">&#36;{{selectedEmployeeSalary.totalSalary}}</div>
+                </div>
+              </div>
             </div>
           </mat-tab>
           <mat-tab label="Projects">
-            No content
+            <table>
+              <mat-row>
+                <th>Project Id</th>
+                <th>Project Name</th>
+                <th>Project Description</th>
+              </mat-row>
+              <mat-row>
+                <td><!--{{selectedEmployeeProject.projectId}}--></td>
+                <td><!--{{selectedEmployeeProject.projectName}}--></td>
+                <td><!--{{selectedEmployeeProject.projectDescription}}--></td>
+              </mat-row>
+            </table>
           </mat-tab>
           <mat-tab label="Roles">
             No content

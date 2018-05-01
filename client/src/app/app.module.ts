@@ -28,13 +28,17 @@ import {EmployeeService} from "./services/employee.service";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RoleDialogComponent } from './components/body/dashboard/role-dialog/role-dialog.component';
-import { AdminViewComponent } from './components/body/admin-view/admin-view.component';
 import { HrViewComponent } from './components/body/hr-view/hr-view.component';
 import { EmployeeViewComponent } from './components/body/employee-view/employee-view.component';
 import { AddEmployeeComponent } from './components/body/hr-view/add-employee/add-employee.component';
 import {FormsModule} from "@angular/forms";
 import { EditEmployeeComponent } from './components/body/hr-view/edit-employee/edit-employee.component';
-import {DeleteEmployeeComponent} from "./components/body/admin-view/delete-employee/delete-employee.component";
+import { EmployeeDialogComponent } from './components/body/dashboard/employee-dialog/employee-dialog.component';
+import { RolesComponent } from './components/body/hr-view/roles/roles.component';
+import { DepartmentsComponent } from './components/body/hr-view/departments/departments.component';
+import { ProjectsComponent } from './components/body/hr-view/projects/projects.component';
+import { EmployeeDeleteDialogComponent } from './components/body/dashboard/employee-delete-dialog/employee-delete-dialog.component';
+import {EmployeeDataViewService} from "./services/employee-data-view.service";
 
 
 @NgModule({
@@ -45,12 +49,15 @@ import {DeleteEmployeeComponent} from "./components/body/admin-view/delete-emplo
     DashboardComponent,
     BodyComponent,
     RoleDialogComponent,
-    AdminViewComponent,
     HrViewComponent,
     EmployeeViewComponent,
     AddEmployeeComponent,
     EditEmployeeComponent,
-    DeleteEmployeeComponent
+    EmployeeDialogComponent,
+    RolesComponent,
+    DepartmentsComponent,
+    ProjectsComponent,
+    EmployeeDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,10 +81,12 @@ import {DeleteEmployeeComponent} from "./components/body/admin-view/delete-emplo
     MatNativeDateModule,
     MatTabsModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, EmployeeDataViewService],
   bootstrap: [AppComponent] ,
   entryComponents: [
-    RoleDialogComponent
+    RoleDialogComponent,
+    EmployeeDialogComponent,
+    EmployeeDeleteDialogComponent
   ]
 })
 export class AppModule { }

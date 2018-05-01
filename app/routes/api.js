@@ -77,6 +77,30 @@ module.exports = function (router) {
 
     });
 
+    //Employee PUT: Edits the Employee information in the database.
+    router.put('/employee/:id', function (request, response) {
+        var employee = new Employee();
+        employee.username = request.body.username;
+        employee.firstName = request.body.firstName;
+        employee.middleName = request.body.middleName;
+        employee.lastName = request.body.lastName;
+        employee.email = request.body.email;
+        employee.gender = request.body.gender;
+        employee.dateOfBirth = request.body.dateOfBirth;
+        employee.phoneNumber = request.body.phoneNumber;
+        employee.roleId = request.body.roleId;
+        Employee.update(Employee.find({employeeId: request.params.id}), request.body, {new:true}, function(err, updatedEmployee){
+            if (err){
+                response.send(err);
+            }
+            else{
+                response.json({
+                    updatedEmployee
+                });
+            }
+        });
+    });
+    
     // Employee GET: Gets all employee information from the database
     router.get('/employee', function (request, response) {
         Employee.find({}, function (err, foundEmployees) {
@@ -94,29 +118,42 @@ module.exports = function (router) {
 
     // Employee GET: Gets information of a particular employee from the database.
     router.get('/employee/:id', function (request, response) {
-        let employee = new Employee();
-        Employee.find({employeeId: request.params.id}, function (err, foundEmployee) {
+        var employee = new Employee();
+        var address = new Address();
+        Employee.find({employeeId: request.params.id}, function (err, foundEmployeeWithId) {
             if (err) {
                 response.json({
                     message: 'This employee does not have any details that could be found: ' + err
                 });
             } else {
-                var address = new Address();
-                Address.find({employeeId: foundAddress.employeeId}, function (err, foundAddress) {
+                Address.findOne({employeeId: request.params.id}, 'addressId employeeId street city state country zip', function (err, addressWithId) {
                     if (err) {
                         response.json({
                             message: 'This employee does not have an address that could be found: ' + err
                         });
                     } else {
-                        this.address = foundAddress;
+                        console.log(address);
+                        address = addressWithId[0];
                     }
                 });
-                this.employee = foundEmployee;
+                employee = foundEmployeeWithId[0];
                 response.json({
-                    "employee": this.employee,
-                    "address": this.address
+                    "employee": employee,
+                    "address": address
                 });
             }
+        });
+    });
+
+    // Employee DELETE: Deletes information of a particular employee from the database.
+    router.delete('/employee/:id',  function (request, response) {
+        Employee.remove({employeeId:request.params.id}, function (err, deletedEmployee) {
+            if (err) {
+                response.send('This employee does not have an address that could be found: ' + err);
+            }
+            response.json(
+                deletedEmployee
+            );
         });
     });
 
@@ -155,7 +192,7 @@ module.exports = function (router) {
     });
 
     // Role POST: Posts role of a particular employee in to the database
-    router.post('/employee/:id/role', function(request, response) {
+    router.post('/hr/roles', function(request, response) {
         var role = new Role();
         role.roleId = request.body.roleId;
         role.roleName = request.body.roleName;
@@ -193,8 +230,23 @@ module.exports = function (router) {
         });
     });
 
+    // Role GET: Gets all roles from the database.
+    router.get('/hr/roles', function(request, response) {
+        Role.find({}, function (err, foundRoles) {
+            if(err){
+                response.json({
+                    message: 'This role doesn\'t exist!: ' + err
+                });
+            }else{
+                response.json(
+                    foundRoles
+                );
+            }
+        });
+    });
+
     // Department POST: Posts department of a particular employee in to the database
-    router.post('/employee/:id/department', function(request, response) {
+    router.post('/hr/departments', function(request, response) {
         var department = new Department();
         department.departmentId = request.body.departmentId;
         department.departmentName = request.body.departmentName;
@@ -232,8 +284,23 @@ module.exports = function (router) {
         });
     });
 
+    // Department GET: Gets all departments from the database.
+    router.get('/hr/departments', function(request, response) {
+        Department.find({}, function (err, foundDepartments) {
+            if(err){
+                response.json({
+                    message: 'Departments don\'t exist!: ' + err
+                });
+            }else{
+                response.json(
+                    foundDepartments
+                );
+            }
+        });
+    });
+
     // Project POST: Posts project of a particular employee in to the database
-    router.post('/employee/:id/project', function(request, response) {
+    router.post('/hr/projects', function(request, response) {
         var project = new Project();
         project.projectId = request.body.projectId;
         project.projectName = request.body.projectName;
@@ -267,6 +334,21 @@ module.exports = function (router) {
                         );
                     }
                 });
+            }
+        });
+    });
+
+    // Project GET: Gets all projects from the database.
+    router.get('/hr/projects', function(request, response) {
+        Project.find({}, function (err, foundProjects) {
+            if(err){
+                response.json({
+                    message: 'Projects don\'t exist!: ' + err
+                });
+            }else{
+                response.json(
+                    foundProjects
+                );
             }
         });
     });
@@ -378,30 +460,24 @@ module.exports = function (router) {
             if (err) {
                 response.send("Error populating salary!" + err);
             } else {
-                response.json(salary);
+                response.json({
+                    salary
+                });
             }
         });
     });
 
     // Salary GET: Gets the salary of a particular employee from the database.
     router.get('/employee/:id/salary', function(request, response) {
-        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
-            if (err) {
+        Salary.find({employeeId: request.params.id}, function (err, foundSalary) {
+            if(err){
                 response.json({
-                    message: 'This employee does not have a salary that could be found: ' + err
+                    message: 'This salary doesn\'t exist!: ' + err
                 });
-            } else {
-                Salary.find({salaryId: foundEmployee.salaryId}, function (err, foundSalary) {
-                    if(err){
-                        response.json({
-                            message: 'This salary doesn\'t exist!: ' + err
-                        });
-                    }else{
-                        response.json(
-                            foundSalary
-                        );
-                    }
-                });
+            }else{
+                response.json(
+                    foundSalary
+                );
             }
         });
     });
@@ -426,25 +502,17 @@ module.exports = function (router) {
 
     // Timesheet GET: Gets the timesheet of a particular employee from the database.
     router.get('/employee/:id/timesheet', function(request, response) {
-        Employee.find({employeeId: request.params.id} , function(err, foundEmployee) {
-            if (err) {
-                response.json({
-                    message: 'This employee does not have a timesheet that could be found: ' + err
-                });
-            } else {
-                Timesheet.find({timesheetId: foundEmployee.timesheetId}, function (err, foundTimesheet) {
-                    if(err){
-                        response.json({
-                            message: 'This timesheet doesn\'t exist!: ' + err
-                        });
-                    }else{
-                        response.json(
-                            foundTimesheet
-                        );
-                    }
-                });
-            }
-        });
+            Timesheet.find({employeeId: request.params.id}, function (err, foundTimesheet) {
+                if(err){
+                    response.json({
+                        message: 'This timesheet doesn\'t exist!: ' + err
+                    });
+                }else{
+                    response.json(
+                        foundTimesheet
+                    );
+                }
+            });
     });
 
     return router;

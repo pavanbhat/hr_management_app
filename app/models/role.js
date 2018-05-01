@@ -5,15 +5,10 @@ var uid = require('uniqid');
 var roleSchema = new schema({
     roleId: {
         type: String,
-    },
-    employeeId: {
-        type: String,
-        ref: "Employee",
-        required: true
+        unique: true
     },
     roleName: {
-        type: String,
-        required: true
+        type: String
     },
     roleDescription: {
         type: String
@@ -21,17 +16,7 @@ var roleSchema = new schema({
 });
 
 roleSchema.pre('save', function(next) {
-    switch (this.roleName){
-        case 'admin':
-            this.roleId = 1;
-            break;
-        case 'hr':
-            this.roleId = 2;
-            break;
-        default:
-            this.roleId = 3;
-            break;
-    } 
+    this.roleId = uid();
     next();
 });
 

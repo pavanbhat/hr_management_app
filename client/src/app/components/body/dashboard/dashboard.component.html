@@ -8,29 +8,29 @@
               <p>{{tile.text}}</p>
             </div>
             <div class="waves-effect card-action">
+              <div *ngIf="tile.link === '/employee/1ezzojgltjnfl'">
+                <a routerLink="{{tile.link}}">View</a>
+              </div>
               <div *ngIf="tile.link === '/hr'">
                 <a routerLink="{{tile.link}}">Manage</a>
               </div>
-              <div *ngIf="tile.link === '/roles'">
-                <a (click)="openRoleDialog()">Manage</a>
-              </div>
-              <div *ngIf="tile.link === '/departments'">
+              <div *ngIf="tile.link === '/hr/roles'">
                 <a routerLink="{{tile.link}}">Manage</a>
               </div>
-              <div *ngIf="tile.link === '/projects'">
+              <div *ngIf="tile.link === '/hr/departments'">
+                <a routerLink="{{tile.link}}">Manage</a>
+              </div>
+              <div *ngIf="tile.link === '/hr/projects'">
                 <a routerLink="{{tile.link}}">Manage</a>
               </div>
               <div *ngIf="tile.link === '/salary'">
-                <a routerLink="{{tile.link}}">Manage</a>
-              </div>
-              <div *ngIf="tile.link === '/timesheet'">
-                <a routerLink="{{tile.link}}">Manage</a>
+                <a (click)="openEmployeeDialog()">Manage</a>
               </div>
               <div *ngIf="tile.link === '/leaves'">
-                <a routerLink="{{tile.link}}">Manage</a>
+                <a (click)="openEmployeeDialog()">Manage</a>
               </div>
               <div *ngIf="tile.link === '/appraisal'">
-                <a routerLink="{{tile.link}}">Manage</a>
+                <a (click)="openEmployeeDialog()">Manage</a>
               </div>
             </div>
           </div>

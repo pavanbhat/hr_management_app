@@ -47,20 +47,44 @@ var employeeSchema = new schema({
         type: String,
         required: true
     },
+    addressId: {
+        type: String,
+        ref: "Role"
+    },
     roleId: {
         type: String,
         ref: "Role"
     },
     departmentId: {
         type: String,
-        ref: "Role"
+        ref: "Department"
+    },
+    projectId: {
+        type: String,
+        ref: "Project"
+    },
+    leaveId: {
+        type: String,
+        ref: "Leave"
+    },
+    appraisalId: {
+        type: String,
+        ref: "Appraisal"
+    },
+    salaryId: {
+        type: String,
+        ref: "Salary"
+    },
+    timesheetId: {
+        type: String,
+        ref: "Timesheet"
     }
 });
 
-employeeSchema.pre('save', function(next) {
+employeeSchema.pre('save', function (next) {
     this.employeeId = uid();
     this.password = uid();
-    bcrypt.hash(this.password, null, null, function(err, hash) {
+    bcrypt.hash(this.password, null, null, function (err, hash) {
         if (err) {
             return next(err);
         }

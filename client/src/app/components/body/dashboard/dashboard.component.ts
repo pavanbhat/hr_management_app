@@ -21,12 +21,12 @@ export class DashboardComponent implements OnInit {
   }
 
   tiles = [
+    {text: 'Employee View', color: 'lightpink', link: '/employee/1ezzojgltjnfl'},
     {text: 'Employee Management', color: 'lightgreen', link: '/hr'},
-    {text: 'Role Management', color: 'lightgreen', link: '/roles'},
-    {text: 'Department Management', color: 'lightgreen', link: '/departments'},
-    {text: 'Project Management', color: 'lightgreen', link: '/projects'},
+    {text: 'Role Management', color: 'lightgreen', link: '/hr/roles'},
+    {text: 'Department Management', color: 'lightgreen', link: '/hr/departments'},
+    {text: 'Project Management', color: 'lightgreen', link: '/hr/projects'},
     {text: 'Salary Management', color: 'lightgreen', link: '/salary'},
-    {text: 'Timesheet Management', color: 'lightgreen', link: '/timesheet'},
     {text: 'Leave Management', color: 'lightgreen', link: '/leaves'},
     {text: 'Appraisal Management', color: 'lightgreen', link: '/appraisal'}
   ];
