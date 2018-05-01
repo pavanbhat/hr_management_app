@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "HR management app to manage employees in a company",
     "main": "server.js",
-    "scripts": {},
+    "scripts": {
+        "start": "node server.js"
+    },
     "keywords": [
         "MEAN",
         "Stack",
