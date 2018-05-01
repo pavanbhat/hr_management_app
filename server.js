@@ -28,7 +28,7 @@ mongoose.connect(config.database, function (err) {
 });
 
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/src/app/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 // Listens to the port on which the server is running
