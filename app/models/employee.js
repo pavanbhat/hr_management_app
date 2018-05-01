@@ -51,15 +51,15 @@ var employeeSchema = new schema({
         type: String,
         ref: "Role"
     },
-    roleId: {
+    roleName: {
         type: String,
         ref: "Role"
     },
-    departmentId: {
+    departmentName: {
         type: String,
         ref: "Department"
     },
-    projectId: {
+    projectName: {
         type: String,
         ref: "Project"
     },

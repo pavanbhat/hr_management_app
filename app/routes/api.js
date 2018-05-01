@@ -215,12 +215,13 @@ module.exports = function (router) {
                     message: 'This employee does not have a role that could be found: ' + err
                 });
             } else {
-                Role.find({roleId: foundEmployee.roleId}, function (err, foundRole) {
+                Role.find({roleName: foundEmployee[0].roleName}, function (err, foundRole) {
                        if(err){
                            response.json({
                                message: 'This role doesn\'t exist!: ' + err
                            });
                        }else{
+                           console.log(foundRole);
                            response.json(
                                foundRole
                            );
@@ -269,7 +270,7 @@ module.exports = function (router) {
                     message: 'This employee does not have a department that could be found: ' + err
                 });
             } else {
-                Department.find({departmentId: foundEmployee.departmentId}, function (err, foundDepartment) {
+                Department.find({departmentName: foundEmployee[0].departmentName}, function (err, foundDepartment) {
                     if(err){
                         response.json({
                             message: 'This department doesn\'t exist!: ' + err
@@ -323,7 +324,7 @@ module.exports = function (router) {
                     message: 'This employee does not have a project that could be found: ' + err
                 });
             } else {
-                Project.find({projectId: foundEmployee.projectId}, function (err, foundProject) {
+                Project.find({projectName: foundEmployee[0].projectName}, function (err, foundProject) {
                     if(err){
                         response.json({
                             message: 'This project doesn\'t exist!: ' + err

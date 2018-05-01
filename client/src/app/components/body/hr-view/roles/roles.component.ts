@@ -42,7 +42,7 @@ export class RolesComponent implements OnInit {
 
   getRoles(): void {
     this.employeeService.getRoles().subscribe(rolesObserver => {
-      console.log(String(Object.keys(rolesObserver[0])));
+      // console.log(String(Object.keys(rolesObserver[0])));
       this.roles = rolesObserver;
       if(this.roles.length > 0){
         this.keys = Object.keys(this.roles[0]);

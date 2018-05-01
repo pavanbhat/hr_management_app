@@ -4,6 +4,8 @@ import {Employee} from "../models/employee";
 import {Observable} from "rxjs/Observable";
 import {Salary} from "../models/salary";
 import {Project} from "../models/project";
+import {Department} from "../models/department";
+import {Role} from "../models/role";
 
 @Injectable()
 export class EmployeeDataViewService {
@@ -20,6 +22,14 @@ export class EmployeeDataViewService {
   }
   getEmployeeProjectData(employee : string): Observable<Project> {
     return this.http.get<Project>(this.getEmployeesURL + employee + '/project').pipe();
+  }
+
+  getEmployeeRoleData(employee : string): Observable<Role> {
+    return this.http.get<Role>(this.getEmployeesURL + employee + '/role').pipe();
+  }
+
+  getEmployeeDepartmentData(employee : string): Observable<Department> {
+    return this.http.get<Department>(this.getEmployeesURL + employee + '/department').pipe();
   }
 
 }

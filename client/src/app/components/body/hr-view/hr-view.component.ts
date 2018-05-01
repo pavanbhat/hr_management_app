@@ -50,7 +50,7 @@ export class HrViewComponent implements OnInit {
       if(this.employees.length > 0){
         this.keys = Object.keys(this.employees[0]);
         for (var _i = 0; _i < this.keys.length; _i++) {
-          if (this.keys[_i] === '_id' || this.keys[_i] === 'password' || this.keys[_i] === '__v') {
+          if (this.keys[_i] === '_id' || this.keys[_i] === 'password' || this.keys[_i] === '__v' || this.keys[_i] === 'roleName' || this.keys[_i] === 'departmentName' || this.keys[_i] === 'projectName') {
             delete this.keys[_i];
           }
         }

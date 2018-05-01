@@ -1,3 +1,34 @@
-<p>
-  departments works!
-</p>
+<div class="table-container mat-elevation-z8">
+  <h5>Search Projects</h5>
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Department ID Column -->
+    <ng-container matColumnDef="departmentId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Department ID</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.departmentId}}</mat-cell>
+    </ng-container>
+
+    <!-- Department Name Column -->
+    <ng-container matColumnDef="departmentName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Department Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.departmentName}}</mat-cell>
+    </ng-container>
+
+    <!-- Department Description Column -->
+    <ng-container matColumnDef="departmentDescription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Department Description</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.departmentDescription}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="keys"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: keys;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event"></mat-paginator>
+
+</div>

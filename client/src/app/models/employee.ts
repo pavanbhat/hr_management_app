@@ -9,5 +9,11 @@ export class Employee {
   gender: string;
   dateOfBirth: Date;
   phoneNumber: string;
-  roleId: string;
+  roleName: string;
+  departmentName: string;
+  projectName: string;
+  leaveId: string;
+  appraisalId: string;
+  salaryId: string;
+  timesheetId: string;
 }
